@@ -20,6 +20,9 @@ public class StartUI {
         Item item1 = new Item();
         item1.setName("item-1");
         tracker.add(item1);
+        Item item2 = new Item();
+        item2.setName("item-1");
+        tracker.add(item2);
         System.out.println("Find by name item-1: " + tracker.findByName("item-1"));
         tracker.findAll();
     }
