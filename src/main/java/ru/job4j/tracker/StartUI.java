@@ -25,5 +25,7 @@ public class StartUI {
         tracker.add(item2);
         System.out.println("Find by name item-1: " + tracker.findByName("item-1"));
         tracker.findAll();
+        System.out.println("Find by Id = 2: " + tracker.findById(2));
+
     }
 }
