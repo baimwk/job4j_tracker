@@ -12,7 +12,8 @@ public class Matches {
             String player = turn ? "Первый игрок" : "Второй игрок";
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
-            if (Arrays.asList(new int[]{1, 2, 3}).contains(matches)) {
+            Integer[] i = new Integer[] {1, 2, 3};
+            if (Arrays.asList(i).contains(matches)) {
                 turn = !turn;
                 count = count - matches > 0 ? count - matches : 0;
                 System.out.println("На столе " + count + " спичек.");
