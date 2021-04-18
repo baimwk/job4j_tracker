@@ -31,9 +31,8 @@ public class StartUI {
                     System.out.print("Введите id заявки: ");
                     int idOld = Integer.valueOf(scanner.nextLine());
                     System.out.print("Введите новое имя заявки: ");
-                    String newName = String.valueOf(scanner.nextLine());
-                    Item itemEdit = new Item();
-                    itemEdit.setName(newName);
+                    String newName = scanner.nextLine();
+                    Item itemEdit = new Item(newName);
                     if (tracker.replace(idOld, itemEdit)) {
                         System.out.println("Успешно");
                     } else {
@@ -45,7 +44,6 @@ public class StartUI {
                     System.out.print("Введите id заявки: ");
                     int idDelete = Integer.valueOf(scanner.nextLine());
                     if (tracker.delete(idDelete)) {
-                        tracker.delete(idDelete);
                         System.out.println("Успешно");
                     } else {
                         System.out.println("Заявка с таким id не найдена");
@@ -55,8 +53,8 @@ public class StartUI {
                     System.out.println("=== Find item by Id ====");
                     System.out.print("Введите id заявки: ");
                     int idFind = Integer.valueOf(scanner.nextLine());
-                    if (tracker.findById(idFind) != null) {
-                        Item itemFind = tracker.findById(idFind);
+                    Item itemFind = tracker.findById(idFind);
+                    if (itemFind != null) {
                         System.out.println(itemFind);
                     } else {
                         System.out.println("Заявка с таким id не найдена");
@@ -65,10 +63,10 @@ public class StartUI {
                 case (5):
                     System.out.println("=== Find items by name ====");
                     System.out.print("Введите имя заявки: ");
-                    String nameFind = String.valueOf(scanner.nextLine());
-                    if (tracker.findByName(nameFind).length != 0) {
-                        Item[] itemFind = tracker.findByName(nameFind);
-                        for (Item value : itemFind) {
+                    String nameFind = scanner.nextLine();
+                    Item[] itemFindByName = tracker.findByName(nameFind);
+                    if (itemFindByName.length != 0) {
+                        for (Item value : itemFindByName) {
                             System.out.println(value);
                         }
                     } else {
