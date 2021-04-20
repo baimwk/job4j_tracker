@@ -11,59 +11,22 @@ public class StartUI {
             int select = Integer.valueOf(input.askStr("Select: "));
             switch (select) {
                 case (0):
-                    System.out.println("=== Create a new Item ====");
-                    String name = input.askStr("Enter name: ");
-                    Item item = new Item(name);
-                    tracker.add(item);
+                    StartUI.createItem(input, tracker);
                     break;
                 case (1):
-                    System.out.println("=== Show all Items ====");
-                    Item[] items = tracker.findAll();
-                    for (Item value : items) {
-                        System.out.println(value);
-                    }
+                    StartUI.showAllItem(tracker);
                     break;
                 case (2):
-                    System.out.println("=== Edit item ====");
-                    int idOld = Integer.valueOf(input.askStr("Введите id заявки: "));
-                    String newName = input.askStr("Введите новое имя заявки: ");
-                    Item itemEdit = new Item(newName);
-                    if (tracker.replace(idOld, itemEdit)) {
-                        System.out.println("Успешно");
-                    } else {
-                        System.out.println("Ошибка");
-                    }
+                    StartUI.editItem(input, tracker);
                     break;
                 case (3):
-                    System.out.println("=== Delete item ====");
-                    int idDelete = Integer.valueOf(input.askStr("Введите id заявки: "));
-                    if (tracker.delete(idDelete)) {
-                        System.out.println("Успешно");
-                    } else {
-                        System.out.println("Заявка с таким id не найдена");
-                    }
+                    StartUI.deleteItem(input, tracker);
                     break;
                 case (4):
-                    System.out.println("=== Find item by Id ====");
-                    int idFind = Integer.valueOf(input.askStr("Введите id заявки: "));
-                    Item itemFind = tracker.findById(idFind);
-                    if (itemFind != null) {
-                        System.out.println(itemFind);
-                    } else {
-                        System.out.println("Заявка с таким id не найдена");
-                    }
+                    StartUI.findItemById(input, tracker);
                     break;
                 case (5):
-                    System.out.println("=== Find items by name ====");
-                    String nameFind = input.askStr("Введите имя заявки: ");
-                    Item[] itemFindByName = tracker.findByName(nameFind);
-                    if (itemFindByName.length != 0) {
-                        for (Item value : itemFindByName) {
-                            System.out.println(value);
-                        }
-                    } else {
-                        System.out.println("Заявки с таким name не найдены");
-                    }
+                    StartUI.findItemsByName(input, tracker);
                     break;
                 case (6):
                     System.out.println("=== Exit Program ====");
@@ -84,7 +47,66 @@ public class StartUI {
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
+    }
 
+    public static void createItem(Input input, Tracker tracker) {
+        System.out.println("=== Create a new Item ====");
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        tracker.add(item);
+    }
+
+    public static void showAllItem(Tracker tracker) {
+        System.out.println("=== Show all Items ====");
+        Item[] items = tracker.findAll();
+        for (Item value : items) {
+            System.out.println(value);
+        }
+    }
+
+    public static void editItem(Input input, Tracker tracker) {
+        System.out.println("=== Edit item ====");
+        int idOld = Integer.valueOf(input.askStr("Введите id заявки: "));
+        String newName = input.askStr("Введите новое имя заявки: ");
+        Item itemEdit = new Item(newName);
+        if (tracker.replace(idOld, itemEdit)) {
+            System.out.println("Успешно");
+        } else {
+            System.out.println("Ошибка");
+        }
+    }
+    public static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("=== Delete item ====");
+        int idDelete = Integer.valueOf(input.askStr("Введите id заявки: "));
+        if (tracker.delete(idDelete)) {
+            System.out.println("Успешно");
+        } else {
+            System.out.println("Заявка с таким id не найдена");
+        }
+    }
+
+    public static void findItemById(Input input, Tracker tracker) {
+        System.out.println("=== Find item by Id ====");
+        int idFind = Integer.valueOf(input.askStr("Введите id заявки: "));
+        Item itemFind = tracker.findById(idFind);
+        if (itemFind != null) {
+            System.out.println(itemFind);
+        } else {
+            System.out.println("Заявка с таким id не найдена");
+        }
+    }
+
+    public static void findItemsByName(Input input, Tracker tracker) {
+        System.out.println("=== Find items by name ====");
+        String nameFind = input.askStr("Введите имя заявки: ");
+        Item[] itemFindByName = tracker.findByName(nameFind);
+        if (itemFindByName.length != 0) {
+            for (Item value : itemFindByName) {
+                System.out.println(value);
+            }
+        } else {
+            System.out.println("Заявки с таким name не найдены");
+        }
     }
 
     public static void main(String[] args) {
@@ -112,5 +134,12 @@ public class StartUI {
         Input input = new ConsoleInput();
         Tracker tracker4 = new Tracker();
         new StartUI().init(input, tracker4);
+
+        Input input1 = new ConsoleInput();
+        Tracker tracker5 = new Tracker();
+        /*Вызов не статического метода. Необходимо обратиться через объект. */
+        new StartUI().init(input1, tracker5);
+        /* Вызов статического метода. Обращаемся через класс. */
+        StartUI.createItem(input1, tracker5);
     }
 }
