@@ -8,7 +8,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(input.askStr("Select: "));
+            int select = input.askInt("Select: ");
             switch (select) {
                 case (0):
                     StartUI.createItem(input, tracker);
@@ -66,7 +66,7 @@ public class StartUI {
 
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
-        int idOld = Integer.valueOf(input.askStr("Введите id заявки: "));
+        int idOld = input.askInt("Введите id заявки: ");
         String newName = input.askStr("Введите новое имя заявки: ");
         Item itemEdit = new Item(newName);
         if (tracker.replace(idOld, itemEdit)) {
@@ -77,7 +77,7 @@ public class StartUI {
     }
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
-        int idDelete = Integer.valueOf(input.askStr("Введите id заявки: "));
+        int idDelete = input.askInt("Введите id заявки: ");
         if (tracker.delete(idDelete)) {
             System.out.println("Успешно");
         } else {
@@ -87,7 +87,7 @@ public class StartUI {
 
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
-        int idFind = Integer.valueOf(input.askStr("Введите id заявки: "));
+        int idFind = input.askInt("Введите id заявки: ");
         Item itemFind = tracker.findById(idFind);
         if (itemFind != null) {
             System.out.println(itemFind);
