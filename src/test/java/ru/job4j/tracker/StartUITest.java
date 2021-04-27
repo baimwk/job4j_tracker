@@ -72,8 +72,8 @@ public class StartUITest {
                         "0. Show all Items" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
                         "=== Show all Items ====" + System.lineSeparator() +
-                        item.toString() + System.lineSeparator() +
-                        item2.toString() + System.lineSeparator() +
+                        item + System.lineSeparator() +
+                        item2 + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. Show all Items" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
@@ -99,7 +99,7 @@ public class StartUITest {
                         "0. Find item by id" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
                         "=== Find item by Id ====" + System.lineSeparator() +
-                        item.toString() + System.lineSeparator() +
+                        item + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. Find item by id" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
@@ -127,8 +127,8 @@ public class StartUITest {
                         "0. Find items by name" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
                         "=== Find items by name ====" + System.lineSeparator() +
-                        item.toString() + System.lineSeparator() +
-                        item2.toString() + System.lineSeparator() +
+                        item + System.lineSeparator() +
+                        item2 + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. Find items by name" + System.lineSeparator() +
                         "1. Exit program" + System.lineSeparator() +
