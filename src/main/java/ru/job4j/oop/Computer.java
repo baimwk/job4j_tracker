@@ -5,7 +5,8 @@ public class Computer {
     private int ssd;
     private String cpu;
 
-    public Computer() {}
+    public Computer() {
+    }
 
     public Computer(int ssd, String cpu) {
         this.ssd = ssd;

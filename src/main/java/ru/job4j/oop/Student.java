@@ -5,7 +5,7 @@ public class Student {
         System.out.println("I can sign a song : " + lyrics);
     }
 
-    public void song(){
+    public void song() {
         System.out.println("I believe I can fly");
     }
 

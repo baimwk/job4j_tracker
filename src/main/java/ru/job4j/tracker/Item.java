@@ -8,7 +8,8 @@ public class Item {
     private int id;
     private String name;
 
-    public Item() { }
+    public Item() {
+    }
 
     public Item(String name) {
         this.name = name;
@@ -36,12 +37,17 @@ public class Item {
     }
 
     public LocalDateTime getCreated() {
-        return created; }
+        return created;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Item item = (Item) o;
         return id == item.id && Objects.equals(name, item.name);
     }
@@ -53,12 +59,10 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "created=" + created +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Item{"
+                + "created=" + created
+                + ", id=" + id
+                + ", name='" + name + '\'' + '}';
     }
-
 
 }
