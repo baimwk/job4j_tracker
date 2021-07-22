@@ -22,16 +22,7 @@ public class AttachmentSort {
         Comparator<Attachment> nameComparator =  new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
-                String leftName = left.getName();
-                String rightName = right.getName();
-                int rsl;
-                for (int i = 0; i < Math.min(leftName.length(), rightName.length()); i++) {
-                    rsl = Character.compare(leftName.charAt(i), rightName.charAt(i));
-                    if (rsl != 0) {
-                        return rsl;
-                    }
-                }
-                return Integer.compare(leftName.length(), rightName.length());
+                return left.getName().compareTo(right.getName());
             }
         };
         attachments.sort(nameComparator);
