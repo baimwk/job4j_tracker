@@ -25,8 +25,8 @@ public class FunctionInterfaceUsage {
         System.out.println("Строка содержит подстроку: " + cond.test("Name", 123));
 
         BiFunction<String, Integer, String> biFunc = (s, k) -> s.concat(" ").concat(k.toString());
-        System.out.println("Результат работы бифункции: " + biFunc.apply("Name" , 123));
-        System.out.println("Результат работы бифункции: " + biFunc.apply("String number" , 12345));
+        System.out.println("Результат работы бифункции: " + biFunc.apply("Name", 123));
+        System.out.println("Результат работы бифункции: " + biFunc.apply("String number", 12345));
 
         BinaryOperator<StringBuilder> builder = (b1, b2) -> b1.append(" ").append(b2);
         System.out.println(
