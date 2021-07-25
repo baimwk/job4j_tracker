@@ -5,13 +5,13 @@ import java.util.Comparator;
 
 public class LambdaUsage {
     public static void main(String[] args) {
-        Comparator<String> cmpText = (left, right) -> {
+        Comparator<String> cmpDescSize = (left, right) -> {
             System.out.println("compare - " + left + " : " + right);
-            return right.compareTo(left);
+            return Integer.compare(right.length(), left.length());
         };
 
-        String[] input = {"a", "c", "b", "one"};
-        Arrays.sort(input, cmpText);
+        String[] input = {"a", "cb", "b", "one"};
+        Arrays.sort(input, cmpDescSize);
         for (String i : input) {
             System.out.println(i);
         }
