@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -9,5 +10,16 @@ public class School {
         return students.stream()
                 .filter(predict)
                 .collect(Collectors.toList());
+    }
+
+    public Map<String, Object> listToMap(List<Student> students) {
+        return students.stream()
+                .collect(
+                        Collectors.toMap(
+                                Student::getSurname,
+                                Student::getClass,
+                                (surname1, surname2) -> surname2.equals(surname1) ? surname2 : surname1
+                        )
+                );
     }
 }
