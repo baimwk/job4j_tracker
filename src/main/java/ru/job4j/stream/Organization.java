@@ -6,9 +6,9 @@ import java.time.Month;
 public class Organization {
     private String name;
 
-    private long OGRN;
+    private long psrn;
 
-    private int INN;
+    private int itn;
 
     private LocalDate registrationDate;
 
@@ -18,25 +18,12 @@ public class Organization {
 
     private String director;
 
-    @Override
-    public String toString() {
-        return "Organization{"
-                + "name='" + name + '\''
-                + ", OGRN=" + OGRN
-                + ", INN=" + INN
-                + ", registrationDate='" + registrationDate + '\''
-                + ", fund='" + fund + '\''
-                + ", address='" + address + '\''
-                + ", director='" + director + '\''
-                + '}';
-    }
-
     static class Builder {
         private String name;
 
-        private long OGRN;
+        private long psrn;
 
-        private int INN;
+        private int itn;
 
         private LocalDate registrationDate;
 
@@ -46,37 +33,37 @@ public class Organization {
 
         private String director;
 
-        Organization.Builder buildName(String name) {
+        Builder buildName(String name) {
             this.name = name;
             return this;
         }
 
-        Organization.Builder buildOGRN(long OGRN) {
-            this.OGRN = OGRN;
+        Builder buildPsrn(long psrn) {
+            this.psrn = psrn;
             return this;
         }
 
-        Organization.Builder buildINN(int INN) {
-            this.INN = INN;
+        Builder buildItn(int itn) {
+            this.itn = itn;
             return this;
         }
 
-        Organization.Builder buildRegistrationDate(LocalDate registrationDate) {
+        Builder buildRegistrationDate(LocalDate registrationDate) {
             this.registrationDate = registrationDate;
             return this;
         }
 
-        Organization.Builder buildFund(long fund) {
+        Builder buildFund(long fund) {
             this.fund = fund;
             return this;
         }
 
-        Organization.Builder buildAddress(String address) {
+        Builder buildAddress(String address) {
             this.address = address;
             return this;
         }
 
-        Organization.Builder buildDirector(String director) {
+        Builder buildDirector(String director) {
             this.director = director;
             return this;
         }
@@ -84,8 +71,8 @@ public class Organization {
         Organization build() {
             Organization organization = new Organization();
             organization.name = name;
-            organization.OGRN = OGRN;
-            organization.INN = INN;
+            organization.psrn = psrn;
+            organization.itn = itn;
             organization.registrationDate = registrationDate;
             organization.fund = fund;
             organization.address = address;
@@ -95,8 +82,8 @@ public class Organization {
 
         public static void main(String[] args) {
             Organization organization = new Organization.Builder().buildName("ПАО 'Перспектива'")
-                    .buildOGRN(470778783422L)
-                    .buildINN(3565444)
+                    .buildPsrn(470778783422L)
+                    .buildItn(3565444)
                     .buildRegistrationDate(LocalDate.of(2003, Month.JUNE, 30))
                     .buildFund(365000000L)
                     .buildAddress("г. Москва, ул. Наметкина, д.3")
@@ -105,4 +92,18 @@ public class Organization {
             System.out.println(organization);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Organization{"
+                + "name='" + name + '\''
+                + ", psrn=" + psrn
+                + ", itn=" + itn
+                + ", registrationDate='" + registrationDate + '\''
+                + ", fund='" + fund + '\''
+                + ", address='" + address + '\''
+                + ", director='" + director + '\''
+                + '}';
+    }
+
 }

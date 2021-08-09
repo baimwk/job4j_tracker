@@ -15,19 +15,6 @@ public class User {
 
     private String gender;
 
-    @Override
-    public String toString() {
-        return "User{"
-                + "name='" + name + '\''
-                + ", surname='" + surname + '\''
-                + ", age=" + age
-                + ", login='" + login + '\''
-                + ", password='" + password + '\''
-                + ", activated=" + activated
-                + ", gender='" + gender + '\''
-                + '}';
-    }
-
     static class Builder {
         private String name;
 
@@ -101,5 +88,18 @@ public class User {
                     .build();
             System.out.println(user);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{"
+                + "name='" + name + '\''
+                + ", surname='" + surname + '\''
+                + ", age=" + age
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", activated=" + activated
+                + ", gender='" + gender + '\''
+                + '}';
     }
 }
