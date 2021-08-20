@@ -42,14 +42,10 @@ public class BankService {
      * @return возвращает пользователя, Optional.empty() есль пользователь не найден
      */
     public Optional<User> findByPassport(String passport) {
-        Optional<User> rsl = Optional.empty();
-        for (User u: users.keySet()) {
-            if (passport.equals(u.getPassport())) {
-                rsl = Optional.of(u);
-                break;
-            }
-        }
-        return rsl;
+        return users.keySet()
+                .stream()
+                .filter(p -> p.getPassport().equals(passport))
+                .findFirst();
     }
 
     /**
@@ -60,18 +56,11 @@ public class BankService {
      * @return - возвращает аккаунт пользователя, Optional.empty() есль аккаунт не найден
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
-        Optional<Account> rsl = Optional.empty();
         Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            List<Account> accounts = users.get(user.get());
-            for (Account a: accounts) {
-                if (a.getRequisite().equals(requisite)) {
-                    rsl = Optional.of(a);
-                    break;
-                }
-            }
-        }
-        return rsl;
+        return user.flatMap(value -> users.get(value)
+                .stream()
+                .filter(a -> a.getRequisite().equals(requisite))
+                .findFirst());
     }
 
     /**
