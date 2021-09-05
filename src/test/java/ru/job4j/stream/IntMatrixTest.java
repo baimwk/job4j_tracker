@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class IntMatrixTest {
     @Test
     public void whenMatrixToList() {
-        Integer[][] matrix = { { 0, 1, 2 }, { 3, 4, 5 } };
+        Integer[][] matrix = {{0, 1, 2}, {3, 4, 5}};
         IntMatrix sc = new IntMatrix();
         List<Integer> rsl = sc.matrixToList(matrix);
         List<Integer> expected = List.of(0, 1, 2, 3, 4, 5);
@@ -19,7 +19,7 @@ public class IntMatrixTest {
 
     @Test
     public void whenEmptyMatrixToList() {
-        Integer[][] matrix = { {}, {} };
+        Integer[][] matrix = {{}, {}};
         IntMatrix sc = new IntMatrix();
         List<Integer> rsl = sc.matrixToList(matrix);
         List<Integer> expected = List.of();
